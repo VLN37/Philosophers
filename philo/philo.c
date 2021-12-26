@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/25 23:49:29 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/25 23:56:08 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@ void	init(t_philo *philo, int argc, char **argv)
 	philo->args = malloc(sizeof(t_args));
 	philo->args->start = get_time();
 	philo->meals = 0;
-	philo->args->time_to_die = atoi(argv[2]);
-	philo->args->time_to_eat = atoi(argv[3]);
-	philo->args->time_to_sleep = atoi(argv[4]);
+	philo->id = 0;
+	philo->args->time_to_die = ft_atoi(argv[2]);
+	philo->args->time_to_eat = ft_atoi(argv[3]);
+	philo->args->time_to_sleep = ft_atoi(argv[4]);
+	philo->dead = false;
+	pthread_mutex_init(&philo->msg, NULL);
 	if (argc == 6)
 	{
 		philo->args->meals_arg = true;
-		philo->args->max_meals = atoi(argv[5]);
+		philo->args->max_meals = ft_atoi(argv[5]);
 	}
 	else
 		philo->args->meals_arg = false;

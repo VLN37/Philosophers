@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/25 23:40:17 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/25 23:59:10 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_bool	eat(t_philo *philo)
 	if (!philo->dead)
 	{
 		time = get_time() - philo->args->start;
-		printf("%lld philo #%d is eating\n", time, philo->id);
+		printf("%-5lld philo #%d is eating\n", time, philo->id);
 		pthread_mutex_unlock(&philo->msg);
 		usleep(philo->args->time_to_eat * 1000);
 		philo->meals++;
@@ -44,7 +44,7 @@ t_bool	sleeping(t_philo *philo)
 	if (!philo->dead)
 	{
 		time = get_time() - philo->args->start;
-		printf("%lld philo #%d is sleeping\n", time, philo->id);
+		printf("%-5lld philo #%d is sleeping\n", time, philo->id);
 		pthread_mutex_unlock(&philo->msg);
 		usleep(philo->args->time_to_sleep * 1000);
 	}
@@ -64,7 +64,7 @@ t_bool	think(t_philo *philo)
 	if (!philo->dead)
 	{
 		time = get_time() - philo->args->start;
-		printf("%lld philo #%d is thinking\n", time, philo->id);
+		printf("%-5lld philo #%d is thinking\n", time, philo->id);
 		pthread_mutex_unlock(&philo->msg);
 	}
 	else
