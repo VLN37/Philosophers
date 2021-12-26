@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 00:44:27 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 01:09:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_args
 	int				max_meals;
 	int				max_philo;
 	t_bool			meals_arg;
+	void			*forks;
 	long long int	start;
 }	t_args;
 

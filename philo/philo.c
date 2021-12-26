@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 00:47:45 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 01:08:50 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	cleanup(t_philo **philo, int max_philo)
 	int	i;
 
 	i = -1;
+	free(philo[0]->args->forks);
 	free(philo[0]->args);
 	while (++i < max_philo)
 		free(philo[i]);
