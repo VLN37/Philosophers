@@ -6,24 +6,49 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 00:51:02 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 01:29:58 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void	grab_forks(t_philo *philo)
+{
+	while (1)
+	{
+		if (!pthread_mutex_lock(&philo->fork1))
+		{
+			if (!pthread_mutex_lock(&philo->fork2))
+				break ;
+			else
+			{
+				pthread_mutex_unlock(&philo->fork1);
+				usleep(10);
+			}
+		}
+		else
+			usleep(10);
+	}
+}
+
+void	drop_forks(t_philo *philo)
+{
+	pthread_mutex_unlock(&philo->fork1);
+	pthread_mutex_unlock(&philo->fork2);
+}
+
 t_bool	eat(t_philo *philo)
 {
-	long long int	time;
-
+	grab_forks(philo);
 	while (pthread_mutex_lock(&philo->msg))
 		usleep(1);
 	if (!philo->dead && philo->meals < philo->args->max_meals)
 	{
-		time = get_time() - philo->args->start;
-		printf("%-5lld philo #%d is eating\n", time, philo->id);
+		philo->last_meal = get_time() - philo->args->start;
+		printf("%-5lld philo #%d is eating\n", philo->last_meal, philo->id);
 		pthread_mutex_unlock(&philo->msg);
 		usleep(philo->args->time_to_eat * 1000);
+		drop_forks(philo);
 		philo->meals++;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 01:09:19 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 01:26:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_args
 typedef struct s_philo
 {
 	int				id;
-	int				last_meal;
 	int				meals;
+	long long int	last_meal;
 	pthread_mutex_t	fork1;
 	pthread_mutex_t	fork2;
 	pthread_mutex_t	msg;
