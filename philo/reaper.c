@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 01:31:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 16:32:35 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 19:29:59 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	*watch(void *arg)
 		{
 			philo->dead = true;
 			philo->args->simulation_done = true;
-			while (pthread_mutex_lock(&philo->msg))
-				usleep(10);
+			pthread_mutex_lock(&philo->msg);
 			time = get_time() - philo->args->start;
 			printf("%-5lld philo #%d is dead\n", time, philo->id);
 			pthread_mutex_unlock(&philo->msg);
