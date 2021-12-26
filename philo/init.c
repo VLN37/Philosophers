@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 00:17:29 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 03:03:40 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 15:29:31 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	init(t_philo **philo, int argc, char **argv)
 		philo[i] = malloc(sizeof(t_philo));
 		philo[i]->id = i;
 		philo[i]->meals = 0;
-		philo[i]->fork1 = forks[i];
-		if (i == args->max_philo)
-			philo[i]->fork2 = forks[0];
+		philo[i]->fork1 = &forks[i];
+		if (i == args->max_philo - 1)
+			philo[i]->fork2 = &forks[0];
 		else
-			philo[i]->fork2 = forks[i + 1];
+			philo[i]->fork2 = &forks[i + 1];
 		philo[i]->dead = false;
 		philo[i]->args = args;
 		philo[i]->msg = msg_mutex;
