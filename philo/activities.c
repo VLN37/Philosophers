@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 15:29:56 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 15:37:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,15 @@
 void	grab_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->fork1);
+	pthread_mutex_lock(&philo->msg);
+	philo->last_meal = get_time() - philo->args->start;
+	printf("%-5lld philo #%d has grabbed fork1\n", philo->last_meal, philo->id);
+	pthread_mutex_unlock(&philo->msg);
 	pthread_mutex_lock(philo->fork2);
+	pthread_mutex_lock(&philo->msg);
+	philo->last_meal = get_time() - philo->args->start;
+	printf("%-5lld philo #%d has grabbed fork2\n", philo->last_meal, philo->id);
+	pthread_mutex_unlock(&philo->msg);
 }
 
 void	drop_forks(t_philo *philo)
