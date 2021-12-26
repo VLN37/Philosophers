@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/25 23:59:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 00:51:02 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_bool	eat(t_philo *philo)
 
 	while (pthread_mutex_lock(&philo->msg))
 		usleep(1);
-	if (!philo->dead)
+	if (!philo->dead && philo->meals < philo->args->max_meals)
 	{
 		time = get_time() - philo->args->start;
 		printf("%-5lld philo #%d is eating\n", time, philo->id);
@@ -30,7 +30,7 @@ t_bool	eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->msg);
 	if (philo->dead)
 		return (false);
-	if (philo->args->meals_arg && philo->meals > philo->args->max_meals)
+	if (philo->args->meals_arg && philo->meals >= philo->args->max_meals)
 		return (false);
 	return (true);
 }
