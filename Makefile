@@ -3,6 +3,7 @@ SRC				=	philo.c \
 					cave.c \
 					utils.c \
 					init.c \
+					reaper.c \
 
 SRC_DIR			=	philo
 OBJ_DIR			=	obj

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 01:29:58 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 03:18:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ t_bool	eat(t_philo *philo)
 		philo->meals++;
 	}
 	else
+	{
 		pthread_mutex_unlock(&philo->msg);
+		drop_forks(philo);
+	}
 	if (philo->dead)
 		return (false);
 	if (philo->args->meals_arg && philo->meals >= philo->args->max_meals)
@@ -65,7 +68,7 @@ t_bool	sleeping(t_philo *philo)
 	long long int	time;
 
 	while (pthread_mutex_lock(&philo->msg))
-		usleep(1);
+		usleep(100);
 	if (!philo->dead)
 	{
 		time = get_time() - philo->args->start;

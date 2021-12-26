@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 01:08:50 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 01:41:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int argc, char **argv)
 	while (++i < max_philo)
 	{
 		philo[i]->args->start = get_time();
+		philo[i]->last_meal = get_time();
 		pthread_create(&threads[i], NULL, &cave, (void *)philo[i]);
 	}
 	i = -1;
