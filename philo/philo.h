@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/25 23:55:59 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 00:18:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ t_bool			eat(t_philo *philo);
 t_bool			sleeping(t_philo *philo);
 t_bool			think(t_philo *philo);
 int				ft_atoi(const char *str);
+void			init(t_philo *philo, int argc, char **argv);
 
 #endif

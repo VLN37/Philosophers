@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/25 23:56:08 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 00:18:47 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,6 @@ t_bool	validation(int argc, char **argv)
 	return (true);
 }
 
-void	init(t_philo *philo, int argc, char **argv)
-{
-	philo->args = malloc(sizeof(t_args));
-	philo->args->start = get_time();
-	philo->meals = 0;
-	philo->id = 0;
-	philo->args->time_to_die = ft_atoi(argv[2]);
-	philo->args->time_to_eat = ft_atoi(argv[3]);
-	philo->args->time_to_sleep = ft_atoi(argv[4]);
-	philo->dead = false;
-	pthread_mutex_init(&philo->msg, NULL);
-	if (argc == 6)
-	{
-		philo->args->meals_arg = true;
-		philo->args->max_meals = ft_atoi(argv[5]);
-	}
-	else
-		philo->args->meals_arg = false;
-}
-
 void	cleanup(t_philo *philo)
 {
 	free(philo->args);
@@ -60,9 +40,10 @@ int	main(int argc, char **argv)
 {
 	pthread_t	t1;
 	t_philo		*philo;
-
+	// t_philo		**philo;
 	if (!validation(argc, argv))
 		return (EXIT_FAILURE);
+	// philo = malloc(sizeof(t_philo *) * ft_atoi(argv[1]));
 	philo = malloc(sizeof(t_philo));
 	init(philo, argc, argv);
 	philo->args->start = get_time();

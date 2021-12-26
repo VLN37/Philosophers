@@ -2,6 +2,7 @@ SRC				=	philo.c \
 					activities.c \
 					cave.c \
 					utils.c \
+					init.c \
 
 SRC_DIR			=	philo
 OBJ_DIR			=	obj
