@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 18:10:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 18:12:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_philo
 	long long int	last_meal;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
-	pthread_mutex_t	*msg;
+	pthread_mutex_t	msg;
 	t_bool			dead;
 	t_args			*args;
 }	t_philo;

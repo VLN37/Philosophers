@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 18:08:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 19:05:33 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	grab_forks(t_philo *philo)
 	if (philo->args->simulation_done == false)
 	{
 		philo->last_meal = get_time() - philo->args->start;
-		printf("%-5lld philo #%d has grabbed fork1\n", philo->last_meal, philo->id);
+		printf("%-5lld philo #%d "
+			"has grabbed fork1\n", philo->last_meal, philo->id);
 		pthread_mutex_unlock(&philo->msg);
 	}
 	else
@@ -29,7 +30,8 @@ void	grab_forks(t_philo *philo)
 	if (philo->args->simulation_done == false)
 	{
 		philo->last_meal = get_time() - philo->args->start;
-		printf("%-5lld philo #%d has grabbed fork2\n", philo->last_meal, philo->id);
+		printf("%-5lld philo #%d "
+			"has grabbed fork2\n", philo->last_meal, philo->id);
 		pthread_mutex_unlock(&philo->msg);
 	}
 	else
