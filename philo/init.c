@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 00:17:29 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 15:29:31 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 18:10:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ t_args	*init_args(char **argv)
 	t_args	*args;
 
 	args = malloc(sizeof(t_args));
+	pthread_mutex_init(&args->waitereven, NULL);
+	pthread_mutex_init(&args->waiterodd, NULL);
+	args->simulation_done = false;
 	args->max_philo = ft_atoi(argv[1]);
 	args->time_to_die = ft_atoi(argv[2]);
 	args->time_to_eat = ft_atoi(argv[3]);
@@ -58,6 +61,9 @@ void	init(t_philo **philo, int argc, char **argv)
 			philo[i]->args->max_meals = ft_atoi(argv[5]);
 		}
 		else
+		{
 			philo[i]->args->meals_arg = false;
+			philo[i]->args->max_meals = 2147483647;
+		}
 	}
 }

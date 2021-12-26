@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 15:37:36 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 18:08:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,24 @@ void	grab_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->fork1);
 	pthread_mutex_lock(&philo->msg);
-	philo->last_meal = get_time() - philo->args->start;
-	printf("%-5lld philo #%d has grabbed fork1\n", philo->last_meal, philo->id);
-	pthread_mutex_unlock(&philo->msg);
+	if (philo->args->simulation_done == false)
+	{
+		philo->last_meal = get_time() - philo->args->start;
+		printf("%-5lld philo #%d has grabbed fork1\n", philo->last_meal, philo->id);
+		pthread_mutex_unlock(&philo->msg);
+	}
+	else
+		pthread_mutex_unlock(&philo->msg);
 	pthread_mutex_lock(philo->fork2);
 	pthread_mutex_lock(&philo->msg);
-	philo->last_meal = get_time() - philo->args->start;
-	printf("%-5lld philo #%d has grabbed fork2\n", philo->last_meal, philo->id);
-	pthread_mutex_unlock(&philo->msg);
+	if (philo->args->simulation_done == false)
+	{
+		philo->last_meal = get_time() - philo->args->start;
+		printf("%-5lld philo #%d has grabbed fork2\n", philo->last_meal, philo->id);
+		pthread_mutex_unlock(&philo->msg);
+	}
+	else
+		pthread_mutex_unlock(&philo->msg);
 }
 
 void	drop_forks(t_philo *philo)
@@ -35,7 +45,8 @@ void	drop_forks(t_philo *philo)
 t_bool	eat(t_philo *philo)
 {
 	grab_forks(philo);
-	if (!philo->dead && philo->meals < philo->args->max_meals)
+	if (!philo->dead && philo->meals < philo->args->max_meals
+		&& philo->args->simulation_done == false)
 	{
 		pthread_mutex_lock(&philo->msg);
 		philo->last_meal = get_time() - philo->args->start;
@@ -46,11 +57,8 @@ t_bool	eat(t_philo *philo)
 		philo->meals++;
 	}
 	else
-	{
-		pthread_mutex_unlock(&philo->msg);
 		drop_forks(philo);
-	}
-	if (philo->dead)
+	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	if (philo->args->meals_arg && philo->meals >= philo->args->max_meals)
 		return (false);
@@ -61,8 +69,7 @@ t_bool	sleeping(t_philo *philo)
 {
 	long long int	time;
 
-	while (pthread_mutex_lock(&philo->msg))
-		usleep(100);
+	pthread_mutex_lock(&philo->msg);
 	if (!philo->dead)
 	{
 		time = get_time() - philo->args->start;
@@ -72,7 +79,7 @@ t_bool	sleeping(t_philo *philo)
 	}
 	else
 		pthread_mutex_unlock(&philo->msg);
-	if (philo->dead)
+	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
 }
@@ -81,17 +88,14 @@ t_bool	think(t_philo *philo)
 {
 	long long int	time;
 
-	while (pthread_mutex_lock(&philo->msg))
-		usleep(1);
 	if (!philo->dead)
 	{
+		pthread_mutex_lock(&philo->msg);
 		time = get_time() - philo->args->start;
 		printf("%-5lld philo #%d is thinking\n", time, philo->id);
 		pthread_mutex_unlock(&philo->msg);
 	}
-	else
-		pthread_mutex_unlock(&philo->msg);
-	if (philo->dead)
+	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
 }

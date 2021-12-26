@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 15:29:19 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 18:10:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ typedef struct s_args
 	int				time_to_die;
 	int				max_meals;
 	int				max_philo;
+	int				dining;
 	t_bool			meals_arg;
+	t_bool			simulation_done;
+	pthread_mutex_t	waitereven;
+	pthread_mutex_t	waiterodd;
 	void			*forks;
 	long long int	start;
 }	t_args;
@@ -47,7 +51,7 @@ typedef struct s_philo
 	long long int	last_meal;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
-	pthread_mutex_t	msg;
+	pthread_mutex_t	*msg;
 	t_bool			dead;
 	t_args			*args;
 }	t_philo;

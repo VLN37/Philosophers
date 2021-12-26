@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 01:31:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 01:59:08 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 16:32:35 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,20 @@ void	*watch(void *arg)
 	while (1)
 	{
 		time = get_time() - start - philo->last_meal;
-		if (time > philo->args->time_to_die)
+		if (time > philo->args->time_to_die && !philo->args->simulation_done)
 		{
 			philo->dead = true;
-			time = get_time() - philo->args->start;
+			philo->args->simulation_done = true;
 			while (pthread_mutex_lock(&philo->msg))
 				usleep(10);
+			time = get_time() - philo->args->start;
 			printf("%-5lld philo #%d is dead\n", time, philo->id);
 			pthread_mutex_unlock(&philo->msg);
-			exit(EXIT_SUCCESS);
+			return (NULL);
 		}
 		if (philo->meals >= philo->args->max_meals)
+			return (NULL);
+		if (philo->args->simulation_done)
 			return (NULL);
 		usleep(100);
 	}
