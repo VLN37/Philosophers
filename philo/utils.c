@@ -6,11 +6,21 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:56:11 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/25 23:55:42 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/26 23:10:15 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+long long int	print_msg(t_philo *philo, char *str)
+{
+	long long int	time;
+
+	time = get_time() - philo->args->start;
+	printf("%-5lld philo #%d %s\n", time, philo->id, str);
+	pthread_mutex_unlock(&philo->msg);
+	return (time);
+}
 
 long long int	get_time(void)
 {
