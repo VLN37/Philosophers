@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 01:41:19 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 02:26:55 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,16 @@ int	main(int argc, char **argv)
 	philo = malloc(sizeof(t_philo *) * ft_atoi(argv[1]));
 	init(philo, argc, argv);
 	i = -1;
+	philo[0]->args->start = get_time();
 	while (++i < max_philo)
 	{
-		philo[i]->args->start = get_time();
 		philo[i]->last_meal = get_time();
 		pthread_create(&threads[i], NULL, &cave, (void *)philo[i]);
 	}
 	i = -1;
 	while (++i < max_philo)
 		pthread_join(threads[i], NULL);
+	usleep(10000);
 	cleanup(philo, max_philo);
 	free(threads);
 	return (0);

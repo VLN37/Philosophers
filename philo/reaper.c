@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 01:31:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 00:53:46 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 02:17:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	*watch(void *arg)
 			pthread_mutex_unlock(&philo->args->msg);
 			return (NULL);
 		}
+		usleep(10);
 		if (philo->meals >= philo->args->max_meals
 			|| philo->args->simulation_done)
 			return (NULL);
-		usleep(100);
 	}
 }
