@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 00:17:29 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 17:29:28 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 17:47:08 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_args	*init_args(int argc, char **argv)
 t_philo	*init_philo(char **argv, t_args *args, t_philo *philo, int i)
 {
 	philo = malloc(sizeof(t_philo));
-	philo->id = i;
+	philo->id = i + 1;
 	philo->meals = 0;
 	philo->fork1 = &args->forks[i];
 	if (i == args->max_philo - 1)
