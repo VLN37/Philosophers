@@ -16,3 +16,6 @@ pthread_loops:
 
 arguments:
 	$(CC) $(CFLAGS) arguments.c $(INCLUDES) && ./a.out
+
+semaphore:
+	$(CC) $(CFLAGS) semaphore.c $(INCLUDES) && ./a.out
