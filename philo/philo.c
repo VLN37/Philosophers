@@ -6,41 +6,11 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 02:26:55 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 17:30:08 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	*routine(void *content)
-{
-	printf("hello\n");
-	return (content);
-}
-
-t_bool	validation(int argc, char **argv)
-{
-	(void)argv;
-	if (argc < 5 || argc > 6)
-	{
-		printf("usage: ./philo num_of_philo time_to_die time_to_eat "
-			"time_to_sleep (optional)times_to_eat\n");
-		return (false);
-	}
-	return (true);
-}
-
-void	cleanup(t_philo **philo, int max_philo)
-{
-	int	i;
-
-	i = -1;
-	free(philo[0]->args->forks);
-	free(philo[0]->args);
-	while (++i < max_philo)
-		free(philo[i]);
-	free(philo);
-}
 
 int	main(int argc, char **argv)
 {

@@ -6,11 +6,23 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 00:17:29 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 17:19:24 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 17:29:28 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	cleanup(t_philo **philo, int max_philo)
+{
+	int	i;
+
+	i = -1;
+	free(philo[0]->args->forks);
+	free(philo[0]->args);
+	while (++i < max_philo)
+		free(philo[i]);
+	free(philo);
+}
 
 t_args	*init_args(int argc, char **argv)
 {

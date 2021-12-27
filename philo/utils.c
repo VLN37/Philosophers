@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:56:11 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 00:53:46 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 17:32:20 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ long long int	get_time(void)
 	return ((time_now.tv_sec * 1000) + (time_now.tv_usec / 1000));
 }
 
-static int	validation(const char *str, int *ptrsign, int *ptri)
+static int	validate_atoi(const char *str, int *ptrsign, int *ptri)
 {
 	int	i;
 
@@ -61,7 +61,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	if (!validation(str, &sign, &i))
+	if (!validate_atoi(str, &sign, &i))
 		return (0);
 	while (str[i] != '\0')
 	{

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 00:53:07 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 17:30:28 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ int				ft_atoi(const char *str);
 void			init(t_philo **philo, int argc, char **argv);
 void			*watch(void *arg);
 long long int	print_msg(t_philo *philo, char *str);
+void			cleanup(t_philo **philo, int max_philo);
+t_bool			validation(int argc, char **argv);
 
 #endif

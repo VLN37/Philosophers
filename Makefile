@@ -4,6 +4,7 @@ SRC				=	philo.c \
 					utils.c \
 					init.c \
 					reaper.c \
+					validation.c \
 
 SRC_DIR			=	philo
 OBJ_DIR			=	obj
