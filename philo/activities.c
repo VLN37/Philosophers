@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 23:09:59 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 00:53:46 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	grab_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->fork1);
-	pthread_mutex_lock(&philo->msg);
+	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, "has grabbed fork1");
 	else
-		pthread_mutex_unlock(&philo->msg);
+		pthread_mutex_unlock(&philo->args->msg);
 	pthread_mutex_lock(philo->fork2);
-	pthread_mutex_lock(&philo->msg);
+	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, "has grabbed fork2");
 	else
-		pthread_mutex_unlock(&philo->msg);
+		pthread_mutex_unlock(&philo->args->msg);
 }
 
 void	drop_forks(t_philo *philo)
@@ -56,14 +56,14 @@ t_bool	eat(t_philo *philo)
 
 t_bool	sleeping(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->msg);
+	pthread_mutex_lock(&philo->args->msg);
 	if (!philo->dead)
 	{
 		print_msg(philo, "is sleeping");
 		usleep(philo->args->time_to_sleep * 1000);
 	}
 	else
-		pthread_mutex_unlock(&philo->msg);
+		pthread_mutex_unlock(&philo->args->msg);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
@@ -74,7 +74,7 @@ t_bool	think(t_philo *philo)
 	if (!philo->dead)
 	{
 		print_msg(philo, "is thinking");
-		pthread_mutex_unlock(&philo->msg);
+		pthread_mutex_unlock(&philo->args->msg);
 	}
 	if (philo->dead || philo->args->simulation_done)
 		return (false);

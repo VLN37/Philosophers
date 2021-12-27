@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 00:17:29 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 19:29:20 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 00:54:04 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ t_args	*init_args(int argc, char **argv)
 
 	args = malloc(sizeof(t_args));
 	args->argc = argc;
-	pthread_mutex_init(&args->waitereven, NULL);
-	pthread_mutex_init(&args->waiterodd, NULL);
+	pthread_mutex_init(&args->msg, NULL);
 	args->simulation_done = false;
 	args->max_philo = ft_atoi(argv[1]);
 	args->time_to_die = ft_atoi(argv[2]);
@@ -56,11 +55,9 @@ t_philo	*init_philo(char **argv, t_args *args, t_philo *philo, int i)
 void	init(t_philo **philo, int argc, char **argv)
 {
 	t_args			*args;
-	pthread_mutex_t	msg_mutex;
 	pthread_mutex_t	*forks;
 	int				i;
 
-	pthread_mutex_init(&msg_mutex, NULL);
 	args = init_args(argc, argv);
 	forks = malloc(sizeof(pthread_mutex_t) * args->max_philo);
 	args->forks = forks;
@@ -69,8 +66,5 @@ void	init(t_philo **philo, int argc, char **argv)
 		pthread_mutex_init(&forks[i], NULL);
 	i = -1;
 	while (++i < args->max_philo)
-	{
 		philo[i] = init_philo(argv, args, philo[i], i);
-		philo[i]->msg = msg_mutex;
-	}
 }

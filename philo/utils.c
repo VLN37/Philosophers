@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:56:11 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/26 23:10:15 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 00:53:46 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long long int	print_msg(t_philo *philo, char *str)
 
 	time = get_time() - philo->args->start;
 	printf("%-5lld philo #%d %s\n", time, philo->id, str);
-	pthread_mutex_unlock(&philo->msg);
+	pthread_mutex_unlock(&philo->args->msg);
 	return (time);
 }
 
