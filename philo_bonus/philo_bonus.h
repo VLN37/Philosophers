@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 03:14:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 03:56:38 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 # include <sys/time.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <sys/types.h>
 # include <sys/stat.h>
+# include <signal.h>
 # include <semaphore.h>
 
 typedef enum e_bool
