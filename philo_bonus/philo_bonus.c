@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:14:23 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 02:45:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 03:22:10 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	int			pid;
 	int			i;
 
+	sem_unlink("farol");
 	if (!validation(argc, argv))
 		return (EXIT_FAILURE);
 	max_philo = ft_atoi(argv[1]);
@@ -33,6 +34,6 @@ int	main(int argc, char **argv)
 		if (pid == 0)
 			cave((void *)philo[i]);
 	}
-	sem_post(&philo[0]->sem->forks);
+	sem_unlink("farol");
 	waitpid(-1, NULL, 0);
 }

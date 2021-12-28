@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:28:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 02:21:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 03:25:39 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ t_philo	*init_philo(char **argv, t_args *args, t_philo *philo, int i)
 
 void	init_sem(t_sem *sem, int argc)
 {
-	if (sem_init(&sem->forks, 1, 2) == -1)
+	sem->named = sem_open("farol", O_CREAT, 0777, 4);
+	if (sem_init(&sem->forks, 1, 4) == -1)
 		printf("sem error\n");
 	if (sem_init(&sem->msg, 1, 1) == -1)
 		printf("sem error\n");

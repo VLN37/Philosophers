@@ -1,3 +1,4 @@
 *.out
 obj/
 philosophers
+philosophers_bonus

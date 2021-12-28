@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 02:20:38 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 03:14:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <sys/wait.h>
+# include <fcntl.h>
+# include <sys/stat.h>
 # include <semaphore.h>
 
 typedef enum e_bool
@@ -45,6 +47,7 @@ typedef struct s_args
 typedef struct s_sem
 {
 	sem_t		forks;
+	sem_t		*named;
 	sem_t		msg;
 }	t_sem;
 

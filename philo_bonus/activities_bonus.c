@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 00:45:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 03:31:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	grab_forks(t_philo *philo)
 {
-	if (sem_wait(&philo->sem->forks) == -1)
+	if (sem_wait(philo->sem->named) == -1)
 		printf("sem error\n");
 	sem_wait(&philo->sem->msg);
 	if (philo->args->simulation_done == false)
@@ -23,7 +23,7 @@ void	grab_forks(t_philo *philo)
 	}
 	else
 		sem_post(&philo->sem->msg);
-	sem_wait(&philo->sem->forks);
+	sem_wait(philo->sem->named);
 	sem_wait(&philo->sem->msg);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, "has grabbed fork2");
@@ -33,8 +33,8 @@ void	grab_forks(t_philo *philo)
 
 void	drop_forks(t_philo *philo)
 {
-	sem_post(&philo->sem->forks);
-	sem_post(&philo->sem->forks);
+	sem_post(philo->sem->named);
+	sem_post(philo->sem->named);
 }
 
 t_bool	eat(t_philo *philo)
