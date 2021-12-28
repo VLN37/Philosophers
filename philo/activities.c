@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 00:53:46 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/27 23:37:20 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	grab_forks(t_philo *philo)
 		print_msg(philo, "has grabbed fork1");
 	else
 		pthread_mutex_unlock(&philo->args->msg);
+	if (philo->args->max_philo == 1)
+	{
+		usleep(philo->args->time_to_die * 1001);
+		return ;
+	}
 	pthread_mutex_lock(philo->fork2);
 	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
