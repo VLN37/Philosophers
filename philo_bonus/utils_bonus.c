@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:22:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 00:03:47 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 05:23:55 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long long int	print_msg(t_philo *philo, char *str)
 
 	time = get_time() - philo->args->start;
 	printf("%-5lld philo #%d %s\n", time, philo->id, str);
-	sem_post(&philo->sem->msg);
+	sem_post(philo->sem->msgs);
 	return (time);
 }
 

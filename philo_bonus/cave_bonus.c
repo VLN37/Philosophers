@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:58:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 03:18:25 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 05:38:12 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	*cave(void *content)
 	if (philo->id % 2)
 		usleep(5000);
 	sem_open("farol", 0);
+	sem_open("msg", 0);
 	pthread_create(&reaper, NULL, &watch, content);
 	pthread_detach(reaper);
 	while (eat(philo) && sleeping(philo) && think(philo))

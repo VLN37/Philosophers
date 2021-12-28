@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:30:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 04:03:38 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 05:29:33 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	*watch(void *arg)
 		time = get_time() - start - philo->last_meal;
 		if (time > philo->args->time_to_die && !philo->args->simulation_done)
 		{
-			sem_wait(&philo->sem->msg);
+			sem_wait(philo->sem->msgs);
 			philo->dead = true;
 			philo->args->simulation_done = true;
 			time = get_time() - start;
 			printf("%-5lld philo #%d is dead\n", time, philo->id);
-			// sem_post(&philo->sem->msg);
+			sem_post(philo->sem->msgs);
 			sem_close(philo->sem->named);
 			return (NULL);
 		}

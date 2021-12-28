@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 03:56:38 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 04:05:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_sem
 {
 	sem_t		forks;
 	sem_t		*named;
+	sem_t		*msgs;
 	sem_t		msg;
 }	t_sem;
 

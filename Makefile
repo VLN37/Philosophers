@@ -52,7 +52,7 @@ clean:
 					$(RM) $(OBJ_DIR)
 
 fclean:				clean
-					$(RM) $(NAME) $(NAME_BONUS)
+					$(RM) $(NAME) $(NAMEBONUS)
 
 re:					fclean all
 

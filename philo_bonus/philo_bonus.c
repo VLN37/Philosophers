@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:14:23 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 04:01:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 05:19:46 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	int			i;
 
 	sem_unlink("farol");
+	sem_unlink("msg");
 	if (!validation(argc, argv))
 		return (EXIT_FAILURE);
 	max_philo = ft_atoi(argv[1]);
@@ -28,6 +29,8 @@ int	main(int argc, char **argv)
 	i = -1;
 	pid = malloc(sizeof(int) * argc - 1);
 	philo[0]->args->start = get_time();
+	printf("%ld\n", philo[0]->sem->msgs->__align);
+	printf("%ld\n", philo[0]->sem->named->__align);
 	while (++i < max_philo)
 	{
 		philo[i]->last_meal = 0;
@@ -36,9 +39,12 @@ int	main(int argc, char **argv)
 			cave((void *)philo[i]);
 	}
 	waitpid(-1, NULL, 0);
+	usleep(50000);
 	i = -1;
 	while (++i < philo[0]->args->max_philo)
 		kill(pid[i], SIGINT);
+	printf("%ld\n", philo[0]->sem->msgs->__align);
+	printf("%ld\n", philo[0]->sem->named->__align);
 	sem_unlink("farol");
-	usleep(50000);
+	sem_unlink("msg");
 }
