@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:30:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 05:29:33 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 17:46:21 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ void	*watch(void *arg)
 
 	philo = (t_philo *)arg;
 	start = philo->args->start;
+	sem_open("msg", 0);
 	while (1)
 	{
 		time = get_time() - start - philo->last_meal;
 		if (time > philo->args->time_to_die && !philo->args->simulation_done)
 		{
+			printf("%lld\n", time);
 			sem_wait(philo->sem->msgs);
 			philo->dead = true;
 			philo->args->simulation_done = true;
@@ -34,7 +36,7 @@ void	*watch(void *arg)
 			sem_close(philo->sem->named);
 			return (NULL);
 		}
-		usleep(10);
+		usleep(50);
 		if (philo->meals >= philo->args->max_meals
 			|| philo->args->simulation_done)
 			return (NULL);
