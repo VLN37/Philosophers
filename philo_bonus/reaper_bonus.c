@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:30:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 01:14:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 02:28:07 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	*watch(void *arg)
 		if (time > philo->args->time_to_die && !philo->args->simulation_done)
 		{
 			sem_wait(&philo->sem->msg);
-			sem_unlink(&philo->sem->forks);
 			philo->dead = true;
 			philo->args->simulation_done = true;
 			time = get_time() - start;

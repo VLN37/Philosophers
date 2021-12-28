@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:14:23 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 02:08:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/28 02:45:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 		pid = fork();
 		if (pid == 0)
 			cave((void *)philo[i]);
-		sem_wait(&philo[0]->sem->forks);
 	}
 	sem_post(&philo[0]->sem->forks);
 	waitpid(-1, NULL, 0);
