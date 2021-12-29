@@ -45,6 +45,7 @@ t_bool	eat(t_philo *philo)
 	if (!philo->dead && philo->meals < philo->args->max_meals
 		&& philo->args->simulation_done == false)
 	{
+		pthread_mutex_lock(&philo->args->msg);
 		philo->last_meal = print_msg(philo, "is eating");
 		usleep(philo->args->time_to_eat * 1000);
 		drop_forks(philo);
@@ -76,11 +77,11 @@ t_bool	sleeping(t_philo *philo)
 
 t_bool	think(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->args->msg);
 	if (!philo->dead)
-	{
 		print_msg(philo, "is thinking");
+	else
 		pthread_mutex_unlock(&philo->args->msg);
-	}
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
