@@ -21,6 +21,7 @@ void	cleanup(t_philo **philo, int max_philo, int *pid)
 	free(philo[0]->args);
 	sem_close(philo[0]->sem->msgs);
 	sem_close(philo[0]->sem->named);
+	sem_close(philo[0]->sem->table);
 	free(philo[0]->sem);
 	while (++i < max_philo)
 		free(philo[i]);
