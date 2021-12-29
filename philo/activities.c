@@ -14,7 +14,7 @@
 
 void	grab_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->fork1);
+	pthread_mutex_lock(&philo->fork1);
 	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, "has grabbed fork1");
@@ -25,7 +25,7 @@ void	grab_forks(t_philo *philo)
 		usleep(philo->args->time_to_die * 1001);
 		return ;
 	}
-	pthread_mutex_lock(philo->fork2);
+	pthread_mutex_lock(&philo->fork2);
 	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, "has grabbed fork2");
@@ -35,8 +35,8 @@ void	grab_forks(t_philo *philo)
 
 void	drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->fork1);
-	pthread_mutex_unlock(philo->fork2);
+	pthread_mutex_unlock(&philo->fork1);
+	pthread_mutex_unlock(&philo->fork2);
 }
 
 t_bool	eat(t_philo *philo)

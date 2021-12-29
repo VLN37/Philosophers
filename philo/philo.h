@@ -49,8 +49,8 @@ typedef struct s_philo
 	int				id;
 	int				meals;
 	long long int	last_meal;
-	pthread_mutex_t	*fork1;
-	pthread_mutex_t	*fork2;
+	pthread_mutex_t	fork1;
+	pthread_mutex_t	fork2;
 	t_bool			dead;
 	t_args			*args;
 }	t_philo;
