@@ -26,5 +26,6 @@ void	*cave(void *content)
 	pthread_detach(reaper);
 	while (eat(philo) && sleeping(philo) && think(philo))
 		continue ;
+	usleep(5000);
 	exit(EXIT_SUCCESS);
 }

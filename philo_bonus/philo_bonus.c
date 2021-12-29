@@ -39,7 +39,8 @@ int	main(int argc, char **argv)
 			cave((void *)philo[i]);
 	}
 	waitpid(-1, NULL, 0);
-	usleep(50000);
+	printf("here\n");
+	usleep(5000);
 	i = -1;
 	while (++i < philo[0]->args->max_philo)
 		kill(pid[i], SIGINT);

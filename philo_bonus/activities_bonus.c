@@ -31,7 +31,6 @@ void	grab_forks(t_philo *philo)
 		print_msg(philo, "has grabbed fork2");
 	else
 		sem_post(philo->sem->msgs);
-	sem_wait(philo->sem->msgs);
 }
 
 void	drop_forks(t_philo *philo)
@@ -46,6 +45,7 @@ t_bool	eat(t_philo *philo)
 	if (!philo->dead && philo->meals < philo->args->max_meals
 		&& philo->args->simulation_done == false)
 	{
+		sem_wait(philo->sem->msgs);
 		philo->last_meal = print_msg(philo, "is eating");
 		usleep(philo->args->time_to_eat * 1000);
 		drop_forks(philo);

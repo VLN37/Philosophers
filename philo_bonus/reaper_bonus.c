@@ -32,8 +32,10 @@ void	*watch(void *arg)
 			philo->args->simulation_done = true;
 			time = get_time() - start;
 			printf("%-5lld philo #%d is dead\n", time, philo->id);
-			sem_post(philo->sem->msgs);
-			sem_close(philo->sem->named);
+			// sem_post(philo->sem->msgs);
+			// sem_close(philo->sem->named);
+			// kill(0, SIGINT);
+			exit(1);
 			return (NULL);
 		}
 		usleep(50);
