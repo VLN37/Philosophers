@@ -74,5 +74,6 @@ t_bool			think(t_philo *philo);
 t_bool			validation(int argc, char **argv);
 void			*cave(void *content);
 void			*watch(void *arg);
+void			cleanup(t_philo **philo, int max_philo, int *pid);
 
 #endif

@@ -12,15 +12,21 @@
 
 #include "philo_bonus.h"
 
-void	cleanup(t_philo **philo, int max_philo)
+void	cleanup(t_philo **philo, int max_philo, int *pid)
 {
 	int	i;
 
 	i = -1;
+	free(pid);
 	free(philo[0]->args);
+	sem_close(philo[0]->sem->msgs);
+	sem_close(philo[0]->sem->named);
+	free(philo[0]->sem);
 	while (++i < max_philo)
 		free(philo[i]);
 	free(philo);
+	sem_unlink("farol");
+	sem_unlink("msg");
 }
 
 t_args	*init_args(int argc, char **argv)

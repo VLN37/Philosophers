@@ -26,15 +26,11 @@ void	*watch(void *arg)
 		time = get_time() - start - philo->last_meal;
 		if (time > philo->args->time_to_die && !philo->args->simulation_done)
 		{
-			printf("%lld\n", time);
 			sem_wait(philo->sem->msgs);
 			philo->dead = true;
 			philo->args->simulation_done = true;
 			time = get_time() - start;
 			printf("%-5lld philo #%d is dead\n", time, philo->id);
-			// sem_post(philo->sem->msgs);
-			// sem_close(philo->sem->named);
-			// kill(0, SIGINT);
 			exit(1);
 			return (NULL);
 		}

@@ -28,8 +28,6 @@ int	main(int argc, char **argv)
 	philo = init(philo, argc, argv);
 	i = -1;
 	pid = malloc(sizeof(int) * argc - 1);
-	printf("%ld\n", philo[0]->sem->msgs->__align);
-	printf("%ld\n", philo[0]->sem->named->__align);
 	philo[0]->args->start = get_time();
 	while (++i < max_philo)
 	{
@@ -39,13 +37,11 @@ int	main(int argc, char **argv)
 			cave((void *)philo[i]);
 	}
 	waitpid(-1, NULL, 0);
-	printf("here\n");
 	usleep(5000);
 	i = -1;
 	while (++i < philo[0]->args->max_philo)
-		kill(pid[i], SIGINT);
-	printf("%ld\n", philo[0]->sem->msgs->__align);
-	printf("%ld\n", philo[0]->sem->named->__align);
-	sem_unlink("farol");
-	sem_unlink("msg");
+		kill(pid[i], SIGKILL);
+	usleep(5000);
+	cleanup(philo, max_philo, pid);
+	return (EXIT_SUCCESS);
 }
