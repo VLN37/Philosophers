@@ -44,11 +44,11 @@ t_philo	*init_philo(char **argv, t_args *args, t_philo *philo, int i)
 	philo = malloc(sizeof(t_philo));
 	philo->id = i + 1;
 	philo->meals = 0;
-	philo->fork1 = args->forks[i];
+	philo->fork1 = &args->forks[i];
 	if (i == args->max_philo - 1)
-		philo->fork2 = args->forks[0];
+		philo->fork2 = &args->forks[0];
 	else
-		philo->fork2 = args->forks[i + 1];
+		philo->fork2 = &args->forks[i + 1];
 	philo->dead = false;
 	philo->args = args;
 	if (args->argc == 6)
