@@ -41,6 +41,7 @@ void	drop_forks(t_philo *philo)
 
 t_bool	eat(t_philo *philo)
 {
+	sem_wait(philo->sem->table);
 	grab_forks(philo);
 	if (!philo->dead && philo->meals < philo->args->max_meals
 		&& philo->args->simulation_done == false)
@@ -53,6 +54,7 @@ t_bool	eat(t_philo *philo)
 	}
 	else
 		drop_forks(philo);
+	sem_post(philo->sem->table);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	if (philo->args->meals_arg && philo->meals >= philo->args->max_meals)

@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 
 	sem_unlink("farol");
 	sem_unlink("msg");
+	sem_unlink("table");
 	if (!validation(argc, argv))
 		return (EXIT_FAILURE);
 	max_philo = ft_atoi(argv[1]);

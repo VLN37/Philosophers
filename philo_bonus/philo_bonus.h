@@ -51,6 +51,7 @@ typedef struct s_sem
 	sem_t		forks;
 	sem_t		*named;
 	sem_t		*msgs;
+	sem_t		*table;
 	sem_t		msg;
 }	t_sem;
 

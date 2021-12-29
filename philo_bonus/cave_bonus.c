@@ -22,6 +22,7 @@ void	*cave(void *content)
 		usleep(5000);
 	sem_open("farol", 0);
 	sem_open("msg", 0);
+	sem_open("table", 0);
 	pthread_create(&reaper, NULL, &watch, content);
 	pthread_detach(reaper);
 	while (eat(philo) && sleeping(philo) && think(philo))

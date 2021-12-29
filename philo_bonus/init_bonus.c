@@ -27,6 +27,7 @@ void	cleanup(t_philo **philo, int max_philo, int *pid)
 	free(philo);
 	sem_unlink("farol");
 	sem_unlink("msg");
+	sem_unlink("table");
 }
 
 t_args	*init_args(int argc, char **argv)
@@ -67,6 +68,7 @@ void	init_sem(t_sem *sem, int argc, char **argv)
 {
 	sem->named = sem_open("farol", O_CREAT, 0777, ft_atoi(argv[1]));
 	sem->msgs = sem_open("msg", O_CREAT, 0777, 1);
+	sem->table = sem_open("table", O_CREAT, 0777, ft_atoi(argv[1]) - 2);
 	if (sem_init(&sem->forks, 1, 4) == -1)
 		printf("sem error\n");
 	if (sem_init(&sem->msg, 1, 1) == -1)

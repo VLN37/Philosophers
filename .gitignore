@@ -2,3 +2,5 @@
 obj/
 philosophers
 philosophers_bonus
+test.sh
+testbonus.sh
