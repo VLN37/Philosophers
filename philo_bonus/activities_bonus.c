@@ -84,6 +84,7 @@ t_bool	think(t_philo *philo)
 		print_msg(philo, "is thinking");
 	else
 		sem_post(philo->sem->msgs);
+	usleep(100);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);

@@ -82,6 +82,7 @@ t_bool	think(t_philo *philo)
 		print_msg(philo, "is thinking");
 	else
 		pthread_mutex_unlock(&philo->args->msg);
+	usleep(100);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
