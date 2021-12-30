@@ -6,16 +6,18 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 00:17:29 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 17:47:08 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:15:33 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	cleanup(t_philo **philo, int max_philo)
+void	cleanup(t_philo **philo)
 {
 	int	i;
+	int	max_philo;
 
+	max_philo = philo[0]->args->max_philo;
 	i = -1;
 	free(philo[0]->args->forks);
 	free(philo[0]->args);
