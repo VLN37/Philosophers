@@ -22,8 +22,8 @@ HEADER			=	philo.h
 HEADERBONUS		=	philo_bonus.h
 OBJ				=	$(SRC:%.c=$(OBJ_DIR)/%.o)
 OBJBONUS		=	$(SRCBONUS:%.c=$(OBJ_DIR)/%.o)
-NAME			=	philosophers
-NAMEBONUS		=	philosophers_bonus
+NAME			=	./philo/philo
+NAMEBONUS		=	./philo_bonus/philo_bonus
 CC				=	gcc -g3
 RM				=	rm -rf
 CFLAGS			=	-Wall -Wextra -Werror
@@ -49,6 +49,9 @@ $(OBJ_DIR):
 
 run:				all
 					./$(NAME)
+
+runbonus:			bonus
+					./$(NAMEBONUS)
 
 clean:
 					$(RM) $(OBJ_DIR)
