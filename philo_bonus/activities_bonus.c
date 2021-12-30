@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 12:39:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 13:51:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,9 @@ t_bool	sleeping(t_philo *philo)
 {
 	sem_wait(philo->sem->msgs);
 	if (!philo->dead)
-	{
 		print_msg(philo, SLEEP);
-		msleep(philo->args->time_to_sleep);
-	}
 	sem_post(philo->sem->msgs);
+	msleep(philo->args->time_to_sleep);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
@@ -79,7 +77,7 @@ t_bool	think(t_philo *philo)
 	if (!philo->dead)
 		print_msg(philo, THINK);
 	sem_post(philo->sem->msgs);
-	usleep(100);
+	usleep(200);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
