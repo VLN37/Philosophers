@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:30:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 06:56:36 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:36:44 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*watch(void *arg)
 			philo->dead = true;
 			philo->args->simulation_done = true;
 			time = get_time() - start;
-			printf("%-5lld philo #%d is dead\n", time, philo->id);
+			printf("%-5lld philo #%d died\n", time, philo->id);
 			cleanup_child((t_philo **)philo->ptr, philo);
 			exit(1);
 		}

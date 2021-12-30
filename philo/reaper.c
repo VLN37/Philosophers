@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 01:31:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 12:26:43 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:31:20 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*watch(void *arg)
 			pthread_mutex_lock(&philo->args->msg);
 			philo->dead = true;
 			philo->args->simulation_done = true;
-			print_msg(philo, "died");
+			print_msg(philo, DIE);
 			pthread_mutex_unlock(&philo->args->msg);
 			return (NULL);
 		}

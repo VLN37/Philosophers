@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 12:29:45 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:33:25 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	grab_forks(t_philo *philo)
 	pthread_mutex_lock(philo->fork1);
 	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
-		print_msg(philo, "has grabbed fork1");
+		print_msg(philo, PICK_FORK);
 	pthread_mutex_unlock(&philo->args->msg);
 	if (philo->args->max_philo == 1)
 	{
@@ -27,7 +27,7 @@ void	grab_forks(t_philo *philo)
 	pthread_mutex_lock(philo->fork2);
 	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
-		print_msg(philo, "has grabbed fork2");
+		print_msg(philo, PICK_FORK);
 	pthread_mutex_unlock(&philo->args->msg);
 }
 
@@ -44,7 +44,7 @@ t_bool	eat(t_philo *philo)
 		&& philo->args->simulation_done == false)
 	{
 		pthread_mutex_lock(&philo->args->msg);
-		philo->last_meal = print_msg(philo, "is eating");
+		philo->last_meal = print_msg(philo, EAT);
 		pthread_mutex_unlock(&philo->args->msg);
 		msleep(philo->args->time_to_eat);
 		philo->meals++;
@@ -62,7 +62,7 @@ t_bool	sleeping(t_philo *philo)
 	pthread_mutex_lock(&philo->args->msg);
 	if (!philo->dead)
 	{
-		print_msg(philo, "is sleeping");
+		print_msg(philo, SLEEP);
 		pthread_mutex_unlock(&philo->args->msg);
 		msleep(philo->args->time_to_sleep);
 	}
@@ -75,7 +75,7 @@ t_bool	think(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->args->msg);
 	if (!philo->dead)
-		print_msg(philo, "is thinking");
+		print_msg(philo, THINK);
 	pthread_mutex_unlock(&philo->args->msg);
 	usleep(200);
 	if (philo->dead || philo->args->simulation_done)

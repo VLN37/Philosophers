@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 07:50:03 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:35:47 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	grab_forks(t_philo *philo)
 	sem_wait(philo->sem->named);
 	sem_wait(philo->sem->msgs);
 	if (philo->args->simulation_done == false)
-		print_msg(philo, "has grabbed fork1");
+		print_msg(philo, PICK_FORK);
 	else
 		sem_post(philo->sem->msgs);
 	if (philo->args->max_philo == 1)
@@ -28,7 +28,7 @@ void	grab_forks(t_philo *philo)
 	sem_wait(philo->sem->named);
 	sem_wait(philo->sem->msgs);
 	if (philo->args->simulation_done == false)
-		print_msg(philo, "has grabbed fork2");
+		print_msg(philo, PICK_FORK);
 	else
 		sem_post(philo->sem->msgs);
 }
@@ -47,7 +47,7 @@ t_bool	eat(t_philo *philo)
 		&& philo->args->simulation_done == false)
 	{
 		sem_wait(philo->sem->msgs);
-		philo->last_meal = print_msg(philo, "is eating");
+		philo->last_meal = print_msg(philo, EAT);
 		msleep(philo->args->time_to_eat);
 		drop_forks(philo);
 		philo->meals++;
@@ -67,7 +67,7 @@ t_bool	sleeping(t_philo *philo)
 	sem_wait(philo->sem->msgs);
 	if (!philo->dead)
 	{
-		print_msg(philo, "is sleeping");
+		print_msg(philo, SLEEP);
 		msleep(philo->args->time_to_sleep);
 	}
 	else
@@ -81,7 +81,7 @@ t_bool	think(t_philo *philo)
 {
 	sem_wait(philo->sem->msgs);
 	if (!philo->dead)
-		print_msg(philo, "is thinking");
+		print_msg(philo, THINK);
 	else
 		sem_post(philo->sem->msgs);
 	usleep(100);

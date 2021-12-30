@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 11:53:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:32:52 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <sys/wait.h>
+
+# define DIE "died"
+# define PICK_FORK "has taken a fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
 
 typedef enum e_bool
 {
