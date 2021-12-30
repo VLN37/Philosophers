@@ -15,8 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_philo		**philo;
-	int			max_philo;
-	int			*pid;
 	int			i;
 
 	sem_unlink("farol");
@@ -24,25 +22,24 @@ int	main(int argc, char **argv)
 	sem_unlink("table");
 	if (!validation(argc, argv))
 		return (EXIT_FAILURE);
-	max_philo = ft_atoi(argv[1]);
 	philo = malloc(sizeof(t_philo *) * ft_atoi(argv[1]));
 	philo = init(philo, argc, argv);
 	i = -1;
-	pid = malloc(sizeof(int) * max_philo);
+	philo[0]->args->pids = malloc(sizeof(int) * philo[0]->args->max_philo);
 	philo[0]->args->start = get_time();
-	while (++i < max_philo)
+	while (++i < philo[0]->args->max_philo)
 	{
 		philo[i]->last_meal = philo[0]->args->start;
-		pid[i] = fork();
-		if (pid[i] == 0)
+		philo[0]->args->pids[i] = fork();
+		if (philo[0]->args->pids[i] == 0)
 			cave((void *)philo[i]);
 	}
 	waitpid(-1, NULL, 0);
 	usleep(5000);
 	i = -1;
 	while (++i < philo[0]->args->max_philo)
-		kill(pid[i], SIGKILL);
+		kill(philo[0]->args->pids[i], SIGKILL);
 	usleep(5000);
-	cleanup(philo, max_philo, pid);
+	cleanup(philo, philo[0]->args->max_philo, philo[0]->args->pids);
 	return (EXIT_SUCCESS);
 }

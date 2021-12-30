@@ -22,7 +22,7 @@ OBJ				=	$(SRC:%.c=$(OBJ_DIR)/%.o)
 OBJBONUS		=	$(SRCBONUS:%.c=$(OBJ_DIR)/%.o)
 NAME			=	philosophers
 NAMEBONUS		=	philosophers_bonus
-CC				=	gcc
+CC				=	gcc -g3
 RM				=	rm -rf
 CFLAGS			=
 INCLUDES		=	-I./ -I./philo_bonus -I./philo

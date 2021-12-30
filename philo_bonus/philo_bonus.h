@@ -39,8 +39,9 @@ typedef struct s_args
 	int				time_to_sleep;
 	int				time_to_die;
 	int				max_meals;
-	int				max_philo;
 	int				argc;
+	int				max_philo;
+	int				*pids;
 	t_bool			meals_arg;
 	t_bool			simulation_done;
 	long long int	start;
