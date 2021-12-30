@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:14:23 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 17:38:07 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 03:25:42 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	philo = malloc(sizeof(t_philo *) * ft_atoi(argv[1]));
 	philo = init(philo, argc, argv);
+	i = -1;
+	while (++i < philo[0]->args->max_philo)
+		philo[i]->ptr = (void **)philo;
 	i = -1;
 	philo[0]->args->start = get_time();
 	while (++i < philo[0]->args->max_philo)
