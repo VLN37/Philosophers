@@ -48,7 +48,7 @@ t_bool	eat(t_philo *philo)
 	{
 		sem_wait(philo->sem->msgs);
 		philo->last_meal = print_msg(philo, "is eating");
-		usleep(philo->args->time_to_eat * 1000);
+		msleep(philo->args->time_to_eat);
 		drop_forks(philo);
 		philo->meals++;
 	}
@@ -68,7 +68,7 @@ t_bool	sleeping(t_philo *philo)
 	if (!philo->dead)
 	{
 		print_msg(philo, "is sleeping");
-		usleep(philo->args->time_to_sleep * 1000);
+		msleep(philo->args->time_to_sleep);
 	}
 	else
 		sem_post(philo->sem->msgs);

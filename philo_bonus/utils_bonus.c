@@ -12,6 +12,16 @@
 
 #include "philo_bonus.h"
 
+void	msleep(long long int time)
+{
+	long long int	start_time;
+
+	start_time = 0;
+	start_time = get_time();
+	while ((get_time() - start_time) < time)
+		usleep(100);
+}
+
 long long int	print_msg(t_philo *philo, char *str)
 {
 	long long int	time;

@@ -66,5 +66,6 @@ void			*watch(void *arg);
 long long int	print_msg(t_philo *philo, char *str);
 void			cleanup(t_philo **philo, int max_philo);
 t_bool			validation(int argc, char **argv);
+void			msleep(long long int time);
 
 #endif
