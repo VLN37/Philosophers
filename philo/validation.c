@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 17:29:56 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/27 17:33:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 11:24:31 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ t_bool	validation(int argc, char **argv)
 	{
 		printf("usage: ./philo num_of_philo time_to_die time_to_eat "
 			"time_to_sleep (optional)times_to_eat\n");
+		return (false);
+	}
+	if (ft_atoi(argv[1] == 0))
+	{
+		printf("there are no philosophers\n")
 		return (false);
 	}
 	if (check_args(argc, argv) == false)
