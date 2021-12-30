@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:14:23 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 03:25:42 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 11:00:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_philo		**philo;
 	int			i;
+	int			exit_code;
 
 	sem_unlink("farol");
 	sem_unlink("msg");
@@ -36,7 +37,14 @@ int	main(int argc, char **argv)
 		if (philo[0]->args->pids[i] == 0)
 			cave((void *)philo[i]);
 	}
-	waitpid(-1, NULL, 0);
+	i = 0;
+	exit_code = 0;
+	while (!exit_code && i < philo[0]->args->max_philo)
+	{
+		waitpid(-1, &exit_code, 0);
+		WEXITSTATUS(exit_code);
+		i++;
+	}
 	usleep(5000);
 	i = -1;
 	while (++i < philo[0]->args->max_philo)

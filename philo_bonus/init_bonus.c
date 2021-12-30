@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:28:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 03:45:03 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 11:00:20 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_philo	*init_philo(char **argv, t_args *args, t_philo *philo, int i)
 	return (philo);
 }
 
-void	init_sem(t_sem *sem, int argc, char **argv)
+void	init_sem(t_sem *sem, char **argv)
 {
 	sem->named = sem_open("farol", O_CREAT, 0777, ft_atoi(argv[1]));
 	sem->msgs = sem_open("msg", O_CREAT, 0777, 1);
@@ -65,7 +65,7 @@ t_philo	**init(t_philo **philo, int argc, char **argv)
 	int				i;
 
 	sem = malloc(sizeof(t_sem));
-	init_sem(sem, argc, argv);
+	init_sem(sem, argv);
 	args = init_args(argc, argv);
 	i = -1;
 	while (++i < args->max_philo)
