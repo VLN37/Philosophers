@@ -6,18 +6,20 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 02:58:08 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 03:45:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 03:49:27 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	cleanup_child(t_philo **philo, t_philo *me, int max_philo, int *pid)
+void	cleanup_child(t_philo **philo, t_philo *me)
 {
 	int	i;
+	int	max_philo;
 
+	max_philo = me->args->max_philo;
 	i = -1;
-	free(pid);
+	free(me->args->pids);
 	sem_close(me->sem->msgs);
 	sem_close(me->sem->msgs);
 	sem_close(me->sem->named);

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 03:40:00 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 03:48:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_bool			validation(int argc, char **argv);
 void			*cave(void *content);
 void			*watch(void *arg);
 void			cleanup(t_philo **philo, int max_philo, int *pid);
-void			cleanup_child(t_philo **philo, t_philo *me, int max_philo, int *pid);
+void			cleanup_child(t_philo **philo, t_philo *me);
 void			msleep(long long int time);
 
 #endif
