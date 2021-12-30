@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 12:35:47 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:39:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	grab_forks(t_philo *philo)
 	sem_wait(philo->sem->msgs);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, PICK_FORK);
-	else
-		sem_post(philo->sem->msgs);
+	sem_post(philo->sem->msgs);
 	if (philo->args->max_philo == 1)
 	{
 		usleep(philo->args->time_to_die * 1001);
@@ -29,8 +28,7 @@ void	grab_forks(t_philo *philo)
 	sem_wait(philo->sem->msgs);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, PICK_FORK);
-	else
-		sem_post(philo->sem->msgs);
+	sem_post(philo->sem->msgs);
 }
 
 void	drop_forks(t_philo *philo)
@@ -48,12 +46,11 @@ t_bool	eat(t_philo *philo)
 	{
 		sem_wait(philo->sem->msgs);
 		philo->last_meal = print_msg(philo, EAT);
+		sem_post(philo->sem->msgs);
 		msleep(philo->args->time_to_eat);
-		drop_forks(philo);
 		philo->meals++;
 	}
-	else
-		drop_forks(philo);
+	drop_forks(philo);
 	sem_post(philo->sem->table);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
@@ -70,8 +67,7 @@ t_bool	sleeping(t_philo *philo)
 		print_msg(philo, SLEEP);
 		msleep(philo->args->time_to_sleep);
 	}
-	else
-		sem_post(philo->sem->msgs);
+	sem_post(philo->sem->msgs);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
@@ -82,8 +78,7 @@ t_bool	think(t_philo *philo)
 	sem_wait(philo->sem->msgs);
 	if (!philo->dead)
 		print_msg(philo, THINK);
-	else
-		sem_post(philo->sem->msgs);
+	sem_post(philo->sem->msgs);
 	usleep(100);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
