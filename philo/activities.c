@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 06:54:20 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:29:45 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	grab_forks(t_philo *philo)
 	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, "has grabbed fork1");
-	else
-		pthread_mutex_unlock(&philo->args->msg);
+	pthread_mutex_unlock(&philo->args->msg);
 	if (philo->args->max_philo == 1)
 	{
 		usleep(philo->args->time_to_die * 1001);
@@ -29,8 +28,7 @@ void	grab_forks(t_philo *philo)
 	pthread_mutex_lock(&philo->args->msg);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, "has grabbed fork2");
-	else
-		pthread_mutex_unlock(&philo->args->msg);
+	pthread_mutex_unlock(&philo->args->msg);
 }
 
 void	drop_forks(t_philo *philo)
@@ -47,12 +45,11 @@ t_bool	eat(t_philo *philo)
 	{
 		pthread_mutex_lock(&philo->args->msg);
 		philo->last_meal = print_msg(philo, "is eating");
+		pthread_mutex_unlock(&philo->args->msg);
 		msleep(philo->args->time_to_eat);
-		drop_forks(philo);
 		philo->meals++;
 	}
-	else
-		drop_forks(philo);
+	drop_forks(philo);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	if (philo->args->meals_arg && philo->meals >= philo->args->max_meals)
@@ -66,10 +63,9 @@ t_bool	sleeping(t_philo *philo)
 	if (!philo->dead)
 	{
 		print_msg(philo, "is sleeping");
+		pthread_mutex_unlock(&philo->args->msg);
 		msleep(philo->args->time_to_sleep);
 	}
-	else
-		pthread_mutex_unlock(&philo->args->msg);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
@@ -80,8 +76,7 @@ t_bool	think(t_philo *philo)
 	pthread_mutex_lock(&philo->args->msg);
 	if (!philo->dead)
 		print_msg(philo, "is thinking");
-	else
-		pthread_mutex_unlock(&philo->args->msg);
+	pthread_mutex_unlock(&philo->args->msg);
 	usleep(200);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
