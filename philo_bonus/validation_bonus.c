@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:16:14 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 11:24:11 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 12:24:26 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ t_bool	validation(int argc, char **argv)
 			"time_to_sleep (optional)times_to_eat\n");
 		return (false);
 	}
-	if (ft_atoi(argv[1] == 0))
+	if (ft_atoi(argv[1]) == 0)
 	{
-		printf("there are no philosophers\n")
+		printf("there are no philosophers\n");
 		return (false);
 	}
 	if (check_args(argc, argv) == false)
