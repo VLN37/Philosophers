@@ -6,30 +6,11 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:28:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/28 04:29:02 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 02:59:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
-void	cleanup(t_philo **philo, int max_philo, int *pid)
-{
-	int	i;
-
-	i = -1;
-	free(pid);
-	free(philo[0]->args);
-	sem_close(philo[0]->sem->msgs);
-	sem_close(philo[0]->sem->named);
-	sem_close(philo[0]->sem->table);
-	free(philo[0]->sem);
-	while (++i < max_philo)
-		free(philo[i]);
-	free(philo);
-	sem_unlink("farol");
-	sem_unlink("msg");
-	sem_unlink("table");
-}
 
 t_args	*init_args(int argc, char **argv)
 {
@@ -42,6 +23,7 @@ t_args	*init_args(int argc, char **argv)
 	args->time_to_die = ft_atoi(argv[2]);
 	args->time_to_eat = ft_atoi(argv[3]);
 	args->time_to_sleep = ft_atoi(argv[4]);
+	args->pids = malloc(sizeof(int) * args->max_philo);
 	return (args);
 }
 

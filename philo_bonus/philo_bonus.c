@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 	philo = malloc(sizeof(t_philo *) * ft_atoi(argv[1]));
 	philo = init(philo, argc, argv);
 	i = -1;
-	philo[0]->args->pids = malloc(sizeof(int) * philo[0]->args->max_philo);
 	philo[0]->args->start = get_time();
 	while (++i < philo[0]->args->max_philo)
 	{
