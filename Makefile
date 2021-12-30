@@ -14,6 +14,7 @@ SRCBONUS		=	philo_bonus.c \
 					utils_bonus.c \
 					validation_bonus.c \
 					cleanup_bonus.c \
+					main.c \
 
 SRC_DIR			=	philo
 OBJ_DIR			=	obj

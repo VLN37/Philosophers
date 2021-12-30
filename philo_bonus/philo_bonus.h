@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 03:48:11 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 11:10:02 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ void			*watch(void *arg);
 void			cleanup(t_philo **philo, int max_philo, int *pid);
 void			cleanup_child(t_philo **philo, t_philo *me);
 void			msleep(long long int time);
+void			spawn_processes(t_philo **philo);
+void			wait_patiently(t_philo **philo);
+void			kill_threads(t_philo **philo);
 
 #endif
