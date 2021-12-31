@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -32,7 +33,7 @@ void	*see_you_in_hell(void *arg)
 			pthread_mutex_unlock(&philo->args->msg);
 			return (NULL);
 		}
-		usleep(50);
+		usleep(200);
 		if (philo->meals >= philo->args->max_meals
 			|| philo->args->simulation_done)
 			return (NULL);

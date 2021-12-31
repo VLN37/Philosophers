@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:42 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 11:54:41 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 09:27:44 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	spawn_threads(t_philo **philo, pthread_t *threads)
 	philo[0]->args->start = get_time();
 	while (++i < philo[0]->args->max_philo)
 	{
-		philo[i]->last_meal = philo[0]->args->start;
+		philo[i]->last_meal = 0;
 		pthread_create(&threads[i], NULL, &cave, (void *)philo[i]);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:14:23 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 11:10:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 09:34:45 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	spawn_processes(t_philo **philo)
 	philo[0]->args->start = get_time();
 	while (++i < philo[0]->args->max_philo)
 	{
-		philo[i]->last_meal = philo[0]->args->start;
+		philo[i]->last_meal = 0;
 		philo[0]->args->pids[i] = fork();
 		if (philo[0]->args->pids[i] == 0)
 			cave((void *)philo[i]);

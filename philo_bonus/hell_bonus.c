@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reaper_bonus.c                                     :+:      :+:    :+:   */
+/*   hell_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:30:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 03:17:28 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 09:35:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*see_you_in_hell(void *arg)
 			print_msg(philo, DIE);
 			return (NULL);
 		}
-		usleep(50);
+		usleep(200);
 		if (philo->meals >= philo->args->max_meals
 			|| philo->args->simulation_done)
 			return (NULL);
