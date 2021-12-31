@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 12:33:25 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 23:56:13 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_bool	eat(t_philo *philo)
 t_bool	sleeping(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->args->msg);
-	if (!philo->dead)
+	if (!philo->args->simulation_done)
 	{
 		print_msg(philo, SLEEP);
 		pthread_mutex_unlock(&philo->args->msg);
@@ -74,7 +74,7 @@ t_bool	sleeping(t_philo *philo)
 t_bool	think(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->args->msg);
-	if (!philo->dead)
+	if (!philo->args->simulation_done)
 		print_msg(philo, THINK);
 	pthread_mutex_unlock(&philo->args->msg);
 	usleep(200);
