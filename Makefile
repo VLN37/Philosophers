@@ -18,12 +18,13 @@ SRCBONUS		=	philo_bonus.c \
 
 SRC_DIR			=	philo
 OBJ_DIR			=	obj
+BIN_DIR			=	bin
 HEADER			=	philo.h
 HEADERBONUS		=	philo_bonus.h
 OBJ				=	$(SRC:%.c=$(OBJ_DIR)/%.o)
 OBJBONUS		=	$(SRCBONUS:%.c=$(OBJ_DIR)/%.o)
-NAME			=	./philo/philo
-NAMEBONUS		=	./philo_bonus/philo_bonus
+NAME			=	./bin/philo
+NAMEBONUS		=	./bin/philo_bonus
 CC				=	gcc -g3
 RM				=	rm -rf
 CFLAGS			=	-Wall -Wextra -Werror
@@ -45,7 +46,7 @@ $(NAMEBONUS):		$(OBJ_DIR) $(OBJBONUS) $(HEADERBONUS)
 					$(CC) $(CFLAGS) $(OBJBONUS) $(LDFLAGS) -o $(NAMEBONUS)
 
 $(OBJ_DIR):
-					mkdir -p obj
+					mkdir -p obj bin
 
 run:				all
 					./$(NAME)
@@ -57,7 +58,7 @@ clean:
 					$(RM) $(OBJ_DIR)
 
 fclean:				clean
-					$(RM) $(NAME) $(NAMEBONUS)
+					$(RM) $(NAME) $(NAMEBONUS) $(BIN_DIR)
 
 re:					fclean all
 

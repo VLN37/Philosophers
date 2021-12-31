@@ -1,5 +1,6 @@
 *.out
 obj/
+bin/
 philosophers
 philosophers_bonus
 test.sh
