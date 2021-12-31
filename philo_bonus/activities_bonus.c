@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 03:10:29 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 13:54:05 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	drop_forks(t_philo *philo)
 
 t_bool	eat(t_philo *philo)
 {
-	sem_wait(philo->sem->table);
+	if (philo->args->max_philo > 1)
+		sem_wait(philo->sem->table);
 	grab_forks(philo);
 	if (philo->dead)
 		return (false);
@@ -62,7 +63,8 @@ t_bool	eat(t_philo *philo)
 		philo->meals++;
 	}
 	drop_forks(philo);
-	sem_post(philo->sem->table);
+	if (philo->args->max_philo > 1)
+		sem_post(philo->sem->table);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	if (philo->args->meals_arg && philo->meals >= philo->args->max_meals)
