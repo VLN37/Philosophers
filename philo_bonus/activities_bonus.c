@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 01:20:34 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 03:10:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_bool	eat(t_philo *philo)
 	return (true);
 }
 
-t_bool	sleeping(t_philo *philo)
+t_bool	_sleep(t_philo *philo)
 {
 	if (philo->dead)
 		return (false);

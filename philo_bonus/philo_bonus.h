@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 01:20:51 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 03:17:28 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ long long int	get_time(void);
 int				ft_atoi(const char *str);
 t_philo			**init(t_philo **philo, int argc, char **argv);
 t_bool			eat(t_philo *philo);
-t_bool			sleeping(t_philo *philo);
+t_bool			_sleep(t_philo *philo);
 t_bool			think(t_philo *philo);
 t_bool			validation(int argc, char **argv);
 void			*cave(void *content);
-void			*watch(void *arg);
+void			*see_you_in_hell(void *arg);
 void			cleanup(t_philo **philo, int max_philo, int *pid);
 void			cleanup_child(t_philo **philo, t_philo *me, int exit_code);
 void			msleep(long long int time);

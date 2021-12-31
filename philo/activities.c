@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 23:56:13 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 03:10:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_bool	eat(t_philo *philo)
 	return (true);
 }
 
-t_bool	sleeping(t_philo *philo)
+t_bool	_sleep(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->args->msg);
 	if (!philo->args->simulation_done)

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 12:32:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 03:17:28 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ typedef struct s_philo
 long long int	get_time(void);
 void			*cave(void *philo);
 t_bool			eat(t_philo *philo);
-t_bool			sleeping(t_philo *philo);
+t_bool			_sleep(t_philo *philo);
 t_bool			think(t_philo *philo);
 int				ft_atoi(const char *str);
 void			init(t_philo **philo, int argc, char **argv);
-void			*watch(void *arg);
+void			*see_you_in_hell(void *arg);
 long long int	print_msg(t_philo *philo, char *str);
 void			cleanup(t_philo **philo);
 t_bool			validation(int argc, char **argv);

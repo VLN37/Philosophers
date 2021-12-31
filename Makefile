@@ -3,14 +3,14 @@ SRC				=	philo.c \
 					cave.c \
 					utils.c \
 					init.c \
-					reaper.c \
+					hell.c \
 					validation.c \
 
 SRCBONUS		=	philo_bonus.c \
 					activities_bonus.c \
 					cave_bonus.c \
 					init_bonus.c \
-					reaper_bonus.c \
+					hell_bonus.c \
 					utils_bonus.c \
 					validation_bonus.c \
 					cleanup_bonus.c \
