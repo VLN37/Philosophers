@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 13:51:32 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 22:35:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	grab_forks(t_philo *philo)
 {
 	sem_wait(philo->sem->named);
-	sem_wait(philo->sem->msgs);
+	if (philo->dead)
+		return ;
+	else
+		sem_wait(philo->sem->msgs);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, PICK_FORK);
 	sem_post(philo->sem->msgs);
@@ -25,7 +28,10 @@ void	grab_forks(t_philo *philo)
 		return ;
 	}
 	sem_wait(philo->sem->named);
-	sem_wait(philo->sem->msgs);
+	if (philo->dead)
+		return ;
+	else
+		sem_wait(philo->sem->msgs);
 	if (philo->args->simulation_done == false)
 		print_msg(philo, PICK_FORK);
 	sem_post(philo->sem->msgs);
@@ -41,10 +47,15 @@ t_bool	eat(t_philo *philo)
 {
 	sem_wait(philo->sem->table);
 	grab_forks(philo);
+	if (philo->dead)
+		return (false);
 	if (!philo->dead && philo->meals < philo->args->max_meals
 		&& philo->args->simulation_done == false)
 	{
-		sem_wait(philo->sem->msgs);
+		if (philo->dead)
+			return (false);
+		else
+			sem_wait(philo->sem->msgs);
 		philo->last_meal = print_msg(philo, EAT);
 		sem_post(philo->sem->msgs);
 		msleep(philo->args->time_to_eat);
@@ -61,7 +72,10 @@ t_bool	eat(t_philo *philo)
 
 t_bool	sleeping(t_philo *philo)
 {
-	sem_wait(philo->sem->msgs);
+	if (philo->dead)
+		return (false);
+	else
+		sem_wait(philo->sem->msgs);
 	if (!philo->dead)
 		print_msg(philo, SLEEP);
 	sem_post(philo->sem->msgs);
@@ -73,7 +87,10 @@ t_bool	sleeping(t_philo *philo)
 
 t_bool	think(t_philo *philo)
 {
-	sem_wait(philo->sem->msgs);
+	if (philo->dead)
+		return (false);
+	else
+		sem_wait(philo->sem->msgs);
 	if (!philo->dead)
 		print_msg(philo, THINK);
 	sem_post(philo->sem->msgs);

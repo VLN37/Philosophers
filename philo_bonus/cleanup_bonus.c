@@ -6,13 +6,13 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 02:58:08 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 03:49:27 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/30 22:43:02 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	cleanup_child(t_philo **philo, t_philo *me)
+void	cleanup_child(t_philo **philo, t_philo *me, int exit_code)
 {
 	int	i;
 	int	max_philo;
@@ -32,6 +32,7 @@ void	cleanup_child(t_philo **philo, t_philo *me)
 	while (++i < max_philo)
 		free(philo[i]);
 	free(philo);
+	exit(exit_code);
 }
 
 void	cleanup(t_philo **philo, int max_philo, int *pid)
