@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 22:35:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 01:20:34 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	grab_forks(t_philo *philo)
 {
-	sem_wait(philo->sem->named);
+	sem_wait(philo->sem->forks);
 	if (philo->dead)
 		return ;
 	else
@@ -27,7 +27,7 @@ void	grab_forks(t_philo *philo)
 		usleep(philo->args->time_to_die * 1001);
 		return ;
 	}
-	sem_wait(philo->sem->named);
+	sem_wait(philo->sem->forks);
 	if (philo->dead)
 		return ;
 	else
@@ -39,8 +39,8 @@ void	grab_forks(t_philo *philo)
 
 void	drop_forks(t_philo *philo)
 {
-	sem_post(philo->sem->named);
-	sem_post(philo->sem->named);
+	sem_post(philo->sem->forks);
+	sem_post(philo->sem->forks);
 }
 
 t_bool	eat(t_philo *philo)

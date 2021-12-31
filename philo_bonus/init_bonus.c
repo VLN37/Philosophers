@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:28:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 11:00:20 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 01:20:34 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,9 @@ t_philo	*init_philo(char **argv, t_args *args, t_philo *philo, int i)
 
 void	init_sem(t_sem *sem, char **argv)
 {
-	sem->named = sem_open("farol", O_CREAT, 0777, ft_atoi(argv[1]));
+	sem->forks = sem_open("farol", O_CREAT, 0777, ft_atoi(argv[1]));
 	sem->msgs = sem_open("msg", O_CREAT, 0777, 1);
 	sem->table = sem_open("table", O_CREAT, 0777, ft_atoi(argv[1]) - 2);
-	if (sem_init(&sem->forks, 1, 4) == -1)
-		printf("sem error\n");
-	if (sem_init(&sem->msg, 1, 1) == -1)
-		printf("sem error\n");
 }
 
 t_philo	**init(t_philo **philo, int argc, char **argv)

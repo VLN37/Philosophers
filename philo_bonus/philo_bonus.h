@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 22:40:18 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 01:20:51 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,9 @@ typedef struct s_args
 
 typedef struct s_sem
 {
-	sem_t		forks;
-	sem_t		*named;
+	sem_t		*forks;
 	sem_t		*msgs;
 	sem_t		*table;
-	sem_t		msg;
 }	t_sem;
 
 typedef struct s_philo

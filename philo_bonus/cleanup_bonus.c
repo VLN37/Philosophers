@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 02:58:08 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 22:43:02 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/31 01:20:34 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	cleanup_child(t_philo **philo, t_philo *me, int exit_code)
 	free(me->args->pids);
 	sem_close(me->sem->msgs);
 	sem_close(me->sem->msgs);
-	sem_close(me->sem->named);
+	sem_close(me->sem->forks);
 	sem_close(me->sem->table);
 	sem_close(philo[0]->sem->msgs);
-	sem_close(philo[0]->sem->named);
+	sem_close(philo[0]->sem->forks);
 	sem_close(philo[0]->sem->table);
 	free(philo[0]->args);
 	free(philo[0]->sem);
@@ -43,7 +43,7 @@ void	cleanup(t_philo **philo, int max_philo, int *pid)
 	free(pid);
 	free(philo[0]->args);
 	sem_close(philo[0]->sem->msgs);
-	sem_close(philo[0]->sem->named);
+	sem_close(philo[0]->sem->forks);
 	sem_close(philo[0]->sem->table);
 	free(philo[0]->sem);
 	while (++i < max_philo)
