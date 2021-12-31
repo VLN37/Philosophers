@@ -75,7 +75,7 @@ git clone https://github.com/VLN37/Philosophers.git philosophers && cd philosoph
 make
 
 # run the program
-./bin/philo [philo quantity] [time_to_die] [time_to_eat] [time_to_sleep] [optional: number of times each philosopher must eat]
+./bin/philo [philo quantity] [time_to_die] [meal_time] [sleep_time] [num of meals]
 
 #for example
 ./bin/philo 4 410 200 200 5
