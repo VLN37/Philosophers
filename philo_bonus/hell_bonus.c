@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:30:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/21 14:15:21 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/21 14:49:51 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*see_you_in_hell(void *arg)
 	while (1)
 	{
 		time = get_time() - start - philo->last_meal;
-		if (philo->sem->msgs->__align == 666)
+		if (philo->sem->msgs == (sem_t *)666)
 			philo->dead = true;
 		if (time > philo->args->time_to_die && !philo->args->simulation_done)
 		{
