@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 03:10:29 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/21 13:57:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_bool	think(t_philo *philo)
 	if (!philo->args->simulation_done)
 		print_msg(philo, THINK);
 	pthread_mutex_unlock(&philo->args->msg);
-	usleep(200);
+	usleep(50);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
