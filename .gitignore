@@ -3,7 +3,5 @@ obj/
 bin/
 philosophers
 philosophers_bonus
-test.sh
-testbonus.sh
 philo_bonus/philo_bonus
 philo/philo
