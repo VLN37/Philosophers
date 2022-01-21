@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 13:54:05 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/21 02:44:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	grab_forks(t_philo *philo)
 {
+	if (philo->dead)
+		return ;
 	sem_wait(philo->sem->forks);
 	if (philo->dead)
 		return ;
