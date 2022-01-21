@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/21 02:44:43 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/21 13:57:53 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_bool	think(t_philo *philo)
 	if (!philo->dead)
 		print_msg(philo, THINK);
 	sem_post(philo->sem->msgs);
-	usleep(200);
+	usleep(50);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);
