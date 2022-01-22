@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 11:05:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/30 11:20:49 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/22 10:08:28 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	main(int argc, char **argv)
 	philo = init(philo, argc, argv);
 	spawn_processes(philo);
 	wait_patiently(philo);
-	usleep(5000);
+	usleep(2000);
 	kill_threads(philo);
-	usleep(5000);
+	usleep(2000);
 	cleanup(philo, philo[0]->args->max_philo, philo[0]->args->pids);
 	return (EXIT_SUCCESS);
 }
