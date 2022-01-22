@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/22 04:11:21 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/22 04:32:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ typedef struct s_sem
 
 typedef struct s_philo
 {
-	int						id;
-	int						meals;
-	_Atomic t_bool			dead;
-	t_sem					*sem;
-	t_args					*args;
-	_Atomic long long int	last_meal;
-	void					**ptr;
+	int					id;
+	int					meals;
+	_Atomic t_bool		dead;
+	t_sem				*sem;
+	t_args				*args;
+	_Atomic long long	last_meal;
+	void				**ptr;
 }	t_philo;
 
 long long int	print_msg(t_philo *philo, char *str);
