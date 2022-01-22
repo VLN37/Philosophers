@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 08:48:45 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 03:17:28 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/22 04:07:23 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_args
 	int				dining;
 	int				argc;
 	t_bool			meals_arg;
-	t_bool			simulation_done;
+	_Atomic t_bool	simulation_done;
 	pthread_mutex_t	msg;
 	pthread_mutex_t	*forks;
 	long long int	start;
@@ -53,11 +53,11 @@ typedef struct s_args
 typedef struct s_philo
 {
 	int				id;
-	int				meals;
-	long long int	last_meal;
+	_Atomic int		meals;
+	_Atomic long long int	last_meal;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
-	t_bool			dead;
+	_Atomic t_bool	dead;
 	t_args			*args;
 }	t_philo;
 
