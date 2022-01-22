@@ -11,13 +11,15 @@ done
 
 x=1
 time=0.1
-echo "1 400 100 100 should die\n"
+echo "2 150 360 100 25 should die\n"
+echo "2 100 200 200 25 should die\n"
+echo "2 150 200 100 25 should die\n"
 while [ $x -le 2 ]
 do
 	echo "Test: $x"
 	./bin/philo 2 150 360 100 25 | grep die
 	./bin/philo 2 100 200 200 25 | grep die
-	./bin/philo 2 100 200 200 25 | grep die
+	./bin/philo 2 150 200 100 25 | grep die
 	sleep $time
 	x=$(( $x + 1 ))
 done
