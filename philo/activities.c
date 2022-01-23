@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/23 07:58:58 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/23 15:53:21 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_bool	eat(t_philo *philo)
 		&& philo->args->simulation_done == false)
 	{
 		pthread_mutex_lock(&philo->args->msg);
-		philo->last_meal = print_msg(philo, EAT);
+		if (!philo->dead && !philo->args->simulation_done)
+			philo->last_meal = print_msg(philo, EAT);
 		pthread_mutex_unlock(&philo->args->msg);
 		msleep(philo->args->time_to_eat);
 		philo->meals++;
