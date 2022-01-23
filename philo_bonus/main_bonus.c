@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 11:05:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/22 10:08:28 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:00:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	sem_unlink("farol");
 	sem_unlink("msg");
 	sem_unlink("table");
+	sem_unlink("finish");
 	if (!validation(argc, argv))
 		return (EXIT_FAILURE);
 	philo = malloc(sizeof(t_philo *) * ft_atoi(argv[1]));

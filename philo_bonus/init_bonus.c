@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:28:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/31 01:20:34 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:01:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_sem(t_sem *sem, char **argv)
 	sem->forks = sem_open("farol", O_CREAT, 0777, ft_atoi(argv[1]));
 	sem->msgs = sem_open("msg", O_CREAT, 0777, 1);
 	sem->table = sem_open("table", O_CREAT, 0777, ft_atoi(argv[1]) - 2);
+	sem->finish = sem_open("finish", O_CREAT, 0777, 1);
 }
 
 t_philo	**init(t_philo **philo, int argc, char **argv)

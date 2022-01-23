@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:20:38 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/22 08:16:23 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/23 12:01:44 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_sem
 	sem_t			*msgs;
 	sem_t			*signal;
 	sem_t			*table;
+	sem_t			*finish;
 }	t_sem;
 
 typedef struct s_philo
