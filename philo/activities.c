@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 21:45:44 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/21 13:57:36 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/23 07:58:58 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	grab_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->fork1);
 	pthread_mutex_lock(&philo->args->msg);
-	if (philo->args->simulation_done == false)
+	if (philo->args->simulation_done == false && philo->dead == false)
 		print_msg(philo, PICK_FORK);
 	pthread_mutex_unlock(&philo->args->msg);
 	if (philo->args->max_philo == 1)
@@ -26,7 +26,7 @@ void	grab_forks(t_philo *philo)
 	}
 	pthread_mutex_lock(philo->fork2);
 	pthread_mutex_lock(&philo->args->msg);
-	if (philo->args->simulation_done == false)
+	if (philo->args->simulation_done == false && philo->dead == false)
 		print_msg(philo, PICK_FORK);
 	pthread_mutex_unlock(&philo->args->msg);
 }
@@ -66,6 +66,8 @@ t_bool	_sleep(t_philo *philo)
 		pthread_mutex_unlock(&philo->args->msg);
 		msleep(philo->args->time_to_sleep);
 	}
+	else
+		pthread_mutex_unlock(&philo->args->msg);
 	if (philo->dead || philo->args->simulation_done)
 		return (false);
 	return (true);

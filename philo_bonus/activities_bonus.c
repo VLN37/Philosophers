@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 22:14:19 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/22 08:24:11 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/23 08:15:38 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,10 @@ t_bool	eat(t_philo *philo)
 	if (philo->args->max_philo > 2)
 		sem_wait(philo->sem->table);
 	grab_forks(philo);
-	if (philo->dead)
-		return (false);
 	if (!philo->dead && philo->meals < philo->args->max_meals
 		&& philo->args->simulation_done == false)
 	{
-		if (philo->dead)
-			return (false);
-		else
-			sem_wait(philo->sem->msgs);
+		sem_wait(philo->sem->msgs);
 		philo->last_meal = print_msg(philo, EAT);
 		sem_post(philo->sem->msgs);
 		msleep(philo->args->time_to_eat);
