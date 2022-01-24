@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 21:58:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2022/01/23 12:59:12 by jofelipe         ###   ########.fr       */
+/*   Updated: 2022/01/24 08:37:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void	*cave(void *content)
 	while (eat(philo) && _sleep(philo) && think(philo))
 		continue ;
 	usleep(10000);
-	if (philo->dead)
-		cleanup_child((t_philo **)philo->ptr, philo, philo->dead);
-	if (philo->args->simulation_done)
-		cleanup_child((t_philo **)philo->ptr, philo, 1);
+	cleanup_child((t_philo **)philo->ptr, philo, philo->dead);
 	exit(EXIT_SUCCESS);
 }
